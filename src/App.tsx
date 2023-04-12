@@ -22,9 +22,8 @@ function App() {
     setLcsOutput(LongestCommonSubsequence.longestCommonSubsequence(sequence1, sequence2));
   }  
 
-  const toggleButtonClicked = (): void => {
-    setRandomInputInterface(!randomInputInterface);
-  }
+  const toggleButtonClicked = (): void => setRandomInputInterface(!randomInputInterface);
+  
 
 
   return (
@@ -37,8 +36,26 @@ function App() {
       </nav><br/>
       <ToggleButton buttonText={ randomInputInterface ? 'Custom' : 'Random'} onClick={ () => toggleButtonClicked() }/>
       <p></p>
-      <input id="sequence1" onChange={ computeLcs } type="text" className="form-control" placeholder="Sequence 1"/><br/>
-      <input id="sequence2" onChange={ computeLcs } type="text" className="form-control" placeholder="Sequence 2"/>
+      { (randomInputInterface) ? (
+          <>
+            <h1>Random Input Interface Placeholder</h1>
+          </>
+        ) : (
+          <>
+            <input id="sequence1" onChange={ () => computeLcs() } type="text" className="form-control" placeholder="Sequence 1"/>
+            <br/>
+            <input id="sequence2" onChange={ () => computeLcs() } type="text" className="form-control" placeholder="Sequence 2"/>
+          </>
+        )
+      }
+      {/*
+      { (randomInputInterface) ? (
+          <h1>Random Input Interface</h1>
+        ) : (
+          <input id="sequence1" onChange={ computeLcs } type="text" className="form-control" placeholder="Sequence 1"/><br/>
+          <input id="sequence2" onChange={ computeLcs } type="text" className="form-control" placeholder="Sequence 2"/>
+      ) }   
+        */}
       <LcsDisplay lcsOutput={ lcsOutput } />
     </div>
   )
