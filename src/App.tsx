@@ -27,7 +27,7 @@ function App() {
 
 
   return (
-    <div className="container">
+    <div className="app-container">
       <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <img src="src/assets/github-logo.svg" alt="" width="30" height="24"/>
