@@ -5,6 +5,9 @@ import { LongestCommonSubsequence } from './helpers/LongestCommonSubsequence';
 import { LcsDisplay } from './components/LcsDisplay';
 import { LcsOutput } from './helpers/LcsOutput';
 import { ToggleButton } from './components/ToggleButton';
+import { RandomSequenceInput } from './components/RandomSequenceInput';
+import { CustomSequenceInput } from './components/CustomSequenceInput';
+import { HomeNavbar } from './components/HomeNavbar';
 
 //*******For dev utility only**********
 const s1: string = 'AGGTAB';
@@ -24,39 +27,15 @@ function App() {
 
   const toggleButtonClicked = (): void => setRandomInputInterface(!randomInputInterface);
   
-
-
   return (
     <div className="app-container">
-      <nav className="navbar navbar-light bg-light">
-        <div className="container-fluid">
-          <img src="src/assets/github-logo.svg" alt="" width="30" height="24"/>
-          <span className="navbar-brand mb-0 h1">Longest Common Subsequence</span>
-        </div>
-      </nav><br/>
+      <HomeNavbar /><br/>
       <ToggleButton buttonText={ randomInputInterface ? 'Custom' : 'Random'} onClick={ () => toggleButtonClicked() }/>
-      <p></p>
+      <p/>
       { (randomInputInterface) ? (
-          <>
-            <div className="input-group mb-3">
-              <span className="input-group-text">Length 1</span>
-              <input id="random-length-1" type="number" className="form-control" placeholder="Length of first sequence"/>
-              <span className="input-group-text">Variance 1</span>
-              <input id="random-variance-1" type="number" className="form-control" placeholder="Variance level of first sequence"/>
-            </div>
-            <div className="input-group mb-3">
-              <span className="input-group-text">Length 2</span>
-              <input id="random-length-2" type="number" className="form-control" placeholder="Length of second sequence"/>
-              <span className="input-group-text">Variance 2</span>
-              <input id="random-variance-2" type="number" className="form-control" placeholder="Variance level of second sequence"/>
-            </div>
-          </>
+          <RandomSequenceInput />
         ) : (
-          <>
-            <input id="sequence1" onChange={ () => computeLcs() } type="text" className="form-control" placeholder="Sequence 1"/>
-            <br/>
-            <input id="sequence2" onChange={ () => computeLcs() } type="text" className="form-control" placeholder="Sequence 2"/>
-          </>
+          <CustomSequenceInput onChange={ () => computeLcs() }/>
         )
       }
       <LcsDisplay lcsOutput={ lcsOutput } />
