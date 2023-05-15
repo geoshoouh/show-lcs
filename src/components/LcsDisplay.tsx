@@ -1,4 +1,4 @@
-import { ReactComponentElement, useState } from 'react';
+import React, {Fragment, ReactComponentElement, useState } from 'react';
 import { LcsOutput } from '../helpers/LcsOutput';
 
 export function LcsDisplay(props: { lcsOutput: LcsOutput }) {
@@ -37,10 +37,16 @@ export function LcsDisplay(props: { lcsOutput: LcsOutput }) {
         <>
             <br/>
             <h3>{ "Length: " + props.lcsOutput.length }</h3><br/>
-            { displayS1 }<br/>
-            { displayS2 }
+            { displayS1.map((item, index) => (
+                <React.Fragment key={`displayS1_${index}`}>
+                    {item}
+                </React.Fragment>
+            )) }<br/>
+            { displayS2.map((item, index) => (
+                <React.Fragment key={`displayS1_${index}`}>
+                    {item}
+                </React.Fragment>
+            )) }
         </>
-        
-
     );
 }

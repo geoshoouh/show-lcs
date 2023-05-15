@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import './helpers/LongestCommonSubsequence';
-import { LongestCommonSubsequence } from './helpers/LongestCommonSubsequence';
 import { LcsDisplay } from './components/LcsDisplay';
 import { LcsOutput } from './helpers/LcsOutput';
 import { ToggleButton } from './components/ToggleButton';
@@ -16,14 +15,8 @@ const s2: string = 'GXTXAYB';
 
 function App() {
 
-  const [lcsOutput, setLcsOutput] = useState(LongestCommonSubsequence.longestCommonSubsequence('', ''));
+  const [lcsOutput, setLcsOutput]: [LcsOutput, () => {}] = useState({sequences: ['', ''], length: 0, indexSequence: [[]], stringSequence: ''});
   const [randomInputInterface, setRandomInputInterface]: [boolean, () => {}] = useState(false);
-
-  const computeLcs = (): void => {
-    const sequence1: string = document.getElementById("sequence1")?.value;
-    const sequence2: string = document.getElementById("sequence2")?.value;
-    setLcsOutput(LongestCommonSubsequence.longestCommonSubsequence(sequence1, sequence2));
-  }  
 
   const toggleButtonClicked = (): void => setRandomInputInterface(!randomInputInterface);
   
@@ -35,7 +28,7 @@ function App() {
       { (randomInputInterface) ? (
           <RandomSequenceInput />
         ) : (
-          <CustomSequenceInput onChange={ () => computeLcs() }/>
+          <CustomSequenceInput setter={ setLcsOutput }/>
         )
       }
       <LcsDisplay lcsOutput={ lcsOutput } />
