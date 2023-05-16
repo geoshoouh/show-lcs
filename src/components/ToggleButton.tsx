@@ -4,7 +4,7 @@ export function ToggleButton(props) {
     return (
         <>
             <button 
-                className="btn btn-primary" 
+                className="btn btn-primary mb-3" 
                 type="submit"
                 onClick={ () => props.onClick() }>
                 { props.buttonText }

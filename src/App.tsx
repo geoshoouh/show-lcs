@@ -22,9 +22,8 @@ function App() {
   
   return (
     <div className="app-container">
-      <HomeNavbar /><br/>
+      <HomeNavbar />
       <ToggleButton buttonText={ randomInputInterface ? 'Custom' : 'Random'} onClick={ () => toggleButtonClicked() }/>
-      <p/>
       { (randomInputInterface) ? (
           <RandomSequenceInput />
         ) : (
@@ -35,8 +34,5 @@ function App() {
     </div>
   )
 }
-
-
-
 
 export default App
