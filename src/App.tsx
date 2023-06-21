@@ -17,6 +17,7 @@ function App() {
 
   const [lcsOutput, setLcsOutput]: [LcsOutput, () => {}] = useState({sequences: ['', ''], length: 0, indexSequence: [[]], stringSequence: ''});
   const [randomInputInterface, setRandomInputInterface]: [boolean, () => {}] = useState(false);
+  const [sequenceParams, setSequenceParams] = useState({l1: 1, l2: 1, v1: 1, v2: 1})
 
   const toggleButtonClicked = (): void => setRandomInputInterface(!randomInputInterface);
   
@@ -25,7 +26,7 @@ function App() {
       <HomeNavbar />
       <ToggleButton buttonText={ randomInputInterface ? 'Custom' : 'Random'} onClick={ () => toggleButtonClicked() }/>
       { (randomInputInterface) ? (
-          <RandomSequenceInput />
+          <RandomSequenceInput setter={ setLcsOutput }/>
         ) : (
           <CustomSequenceInput setter={ setLcsOutput }/>
         )
