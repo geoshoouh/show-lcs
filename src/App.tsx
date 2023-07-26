@@ -15,11 +15,16 @@ const s2: string = 'GXTXAYB';
 
 function App() {
 
-  const [lcsOutput, setLcsOutput]: [LcsOutput, () => {}] = useState({sequences: ['', ''], length: 0, indexSequence: [[]], stringSequence: ''});
-  const [randomInputInterface, setRandomInputInterface]: [boolean, () => {}] = useState(false);
-  const [sequenceParams, setSequenceParams] = useState({l1: 1, l2: 1, v1: 1, v2: 1})
+  const nullLcsOutput: LcsOutput = {sequences: ['', ''], length: 0, indexSequence: [[]], stringSequence: ''};
 
-  const toggleButtonClicked = (): void => setRandomInputInterface(!randomInputInterface);
+  const [lcsOutput, setLcsOutput]: [LcsOutput, () => {}] = useState(nullLcsOutput);
+  const [randomInputInterface, setRandomInputInterface]: [boolean, () => {}] = useState(false);
+  const [sequenceParams, setSequenceParams] = useState({l1: 1, l2: 1, v1: 1, v2: 1});
+
+  const toggleButtonClicked = (): void => {
+    setRandomInputInterface(!randomInputInterface);
+    setLcsOutput(nullLcsOutput)
+  };
   
   return (
     <div className="app-container">
