@@ -1,4 +1,4 @@
-import { ReactComponentElement, useState } from 'react';
+import React, { ReactComponentElement, useState } from 'react';
 import { LongestCommonSubsequence } from '../helpers/LongestCommonSubsequence';
 
 export function CustomSequenceInput(props) {

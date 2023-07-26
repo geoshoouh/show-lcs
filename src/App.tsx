@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './helpers/LongestCommonSubsequence';
 import { LcsDisplay } from './components/LcsDisplay';
